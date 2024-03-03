@@ -18,6 +18,10 @@ body {
   filter: blur(0.5pt);
 }
 
+#terminal .history > div {
+  white-space: pre;
+}
+
 .cursor {
   animation: blinker 1s linear infinite;
 }

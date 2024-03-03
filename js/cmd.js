@@ -2,12 +2,13 @@ const runCmd = () => {
   const [command, ...args] = cmd.split(' ');
 
   switch (command) {
+    case '': break;
     case 'ls': run_ls(args); break;
     case 'pwd': run_pwd(); break;
     case 'cd': run_cd(args); break;
     case 'clear': run_clear(); break;
     case 'cat': run_cat(args); break;
-    case '': break;
+    case 'help': run_help(); break;
     default:
       history.push(`err: ${command}: command not found`);
       break;
@@ -16,7 +17,7 @@ const runCmd = () => {
 
 const run_cd = (args) => {
   if (args.length === 0) {
-    currentDir = 'home/user';
+    currentDir = '';
     return;
   }
 
@@ -61,7 +62,7 @@ const run_cat = (args) => {
     return;
   }
 
-  const file = args[0].startsWith('/') ? args[0] : `/${currentDir}/${args[0]}`;
+  const file = args[0].startsWith('/') ? args[0] : `/${currentDir}/${args[0]}`.replace('//', '/');
 
   if (!filesystem[file]) {
     history.push(`cat: ${args[0]}: No such file`);
@@ -70,3 +71,6 @@ const run_cat = (args) => {
   filesystem[file].split('\n').forEach((line) => history.push(line));
 };
 
+const run_help = () => {
+  history.push('commands: ls, cd, pwd, cat, clear');
+};

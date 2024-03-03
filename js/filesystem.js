@@ -1,12 +1,9 @@
-let currentDir = 'home/user';
+let currentDir = '';
 let filesystem = {
-  '/etc/passwd': 'root:x:0:0:root:/root:/bin/bash\nroot:x:0:0:root:/root:/bin/bash\nroot:x:0:0:root:/root:/bin/bash\nroot:x:0:0:root:/root:/bin/bash\n',
-  '/etc/hosts': 'localhost     127.0.0.1\nip6-localhost ip6-loopback\n',
-  '/bin/ls': '[BINARY DATA]',
-  '/bin/cd': '[BINARY DATA]',
-  '/bin/pwd': '[BINARY DATA]',
-  '/usr/bin/cat': '[BINARY DATA]',
-  '/home/user/.bashrc': 'export PS1="$ "',
+  '/etc/hosts': 'localhost         127.0.0.1\nipv6-localhost    ::1\n',
+  '/etc/passwd': 'root:x:0:0:root:/root:/bin/bash\nuser:x:1000:1000:user:/home/user:/bin/bash\n',
+  '/home/user/.hidden': 'Top Secret\n',
+  '/home/user/hello.txt': 'Hello, World!\n',
 };
 
 const getFiles = (cwd) => {
