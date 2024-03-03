@@ -72,7 +72,7 @@ terminal.addEventListener("keydown", (e) => {
         cmd += e.key;
         renderCmd();
       } else {
-        console.log('KEY> ', e.key, e.keyCode, e.code, e.which, e.charCode, e);
+        //console.log('KEY> ', e.key, e.keyCode, e.code, e.which, e.charCode, e);
       }
   }
 
@@ -86,18 +86,18 @@ const renderCmd = () => {
 
 
 const renderHistory = () => {
-  let offset = 0;
+  //let offset = 0;
 
   history.forEach((hist, i) => {
     const label = 'label-history-' + i;
 
     if (!document.getElementById(label)) {
-      setTimeout(() => {
-        historyElement.innerHTML += `<div id="label-history-${i}">${hist}</div>`;
-        promptElement.scrollIntoView();
-      }, 100 * offset);
+      //setTimeout(() => {
+      historyElement.innerHTML += `<div id="label-history-${i}">${hist}</div>`;
+      promptElement.scrollIntoView();
+      //}, 100 * offset);
 
-      offset++;
+      //offset++;
     }
   });
 }
