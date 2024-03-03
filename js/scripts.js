@@ -8,14 +8,15 @@ let history = [];
 let cmdHistory = [];
 let cmdHistoryIndex = 0;
 let cmd = '';
-let currentDir = '';
+let currentDir = 'home/user';
 let filesystem = {
   '/etc/passwd': 'root:x:0:0:root:/root:/bin/bash\n',
-  '/etc/hosts': 'localhost 127.0.0.1\nip6-localhost ip6-loopback\n',
+  '/etc/hosts': 'localhost     127.0.0.1\nip6-localhost ip6-loopback\n',
   '/bin/ls': '[BINARY DATA]',
   '/bin/cd': '[BINARY DATA]',
   '/bin/pwd': '[BINARY DATA]',
   '/usr/bin/cat': '[BINARY DATA]',
+  '/home/user/.bashrc': 'export PS1="$ "',
 };
 
 const focusTerminal = () => {
@@ -149,7 +150,7 @@ const runCmd = () => {
       break;
     case 'cd':
       if (args.length === 0) {
-        currentDir = '';
+        currentDir = 'home/user';
         break;
       }
 
@@ -185,8 +186,13 @@ const runCmd = () => {
         break;
       }
 
-      const file = `/${currentDir}/${args[0]}`;
-      history.push(filesystem[file]);
+      const file = args[0].startsWith('/') ? args[0] : `/${currentDir}/${args[0]}`;
+
+      if (!filesystem[file]) {
+        history.push(`cat: ${args[0]}: No such file`);
+        break;
+      }
+      filesystem[file].split('\n').forEach((line) => history.push(line));
       break;
     default:
       history.push(`err: ${command}: command not found`);
