@@ -27,6 +27,7 @@ terminal.addEventListener("click", () => {
   focusTerminal();
 });
 
+window.addEventListener('load', focusTerminal);
 
 terminal.addEventListener("keydown", (e) => {
   if (!terminalFocus || e.isComposing || e.keyCode === 229 || e.altKey || e.ctrlKey) {
