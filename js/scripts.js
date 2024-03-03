@@ -175,6 +175,10 @@ const runCmd = () => {
         history.push(`cd: ${args[0]}: No such directory`);
       }
       break;
+    case 'clear':
+      history = [];
+      historyElement.innerHTML = '';
+      break;
     case 'cat':
       if (args.length === 0) {
         history.push('cat: missing file argument');
