@@ -1,8 +1,10 @@
 body {
   background: #222222;
   color: #cccccc;
-  font-family: Monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 18pt;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #terminal {
@@ -12,8 +14,8 @@ body {
   top: 0px; right: 0px; bottom: 0px; left: 0px;
   overflow-y: scroll;
   padding: 10px;
-  line-height: 1.5;
-  filter: blur(0.75pt);
+  line-height: 1.2;
+  filter: blur(0.5pt);
 }
 
 .cursor {
