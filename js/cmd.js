@@ -2,11 +2,12 @@ const runCmd = () => {
   const [command, ...args] = cmd.split(' ');
 
   switch (command) {
-    case 'ls': run_ls(); break;
+    case 'ls': run_ls(args); break;
     case 'pwd': run_pwd(); break;
     case 'cd': run_cd(args); break;
     case 'clear': run_clear(); break;
     case 'cat': run_cat(args); break;
+    case '': break;
     default:
       history.push(`err: ${command}: command not found`);
       break;
@@ -46,9 +47,11 @@ const run_pwd = () => {
   history.push('/' + currentDir);
 };
 
-const run_ls = () => {
-  const dirs = getDirs(currentDir);
-  const files = getFiles(currentDir);
+const run_ls = (args) => {
+  const showHidden = args.includes('-a');
+  const dirs = getDirs(currentDir).filter((d) => showHidden || !d.startsWith('.'));
+  const files = getFiles(currentDir).filter((f) => showHidden || !f.startsWith('.'));
+
   [...dirs, ...files].forEach((f) => history.push(f));
 };
 

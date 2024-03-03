@@ -1,3 +1,4 @@
+const screen = document.querySelector('#screen');
 const terminal = document.querySelector('#terminal');
 const promptElement = terminal.querySelector('.prompt');
 const historyElement = terminal.querySelector('.history');
