@@ -5,16 +5,15 @@ function drawCRTLines() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  const lineHeight = 2; // Height of each horizontal bar
-  const gap = 5; // Gap between bars
-  const opacityVariation = 0.05; // Variation in opacity for dynamic effect
+  const lineHeight = 2;
+  const gap = 5;
+  const opacityVariation = 0.05;
 
   for (let y = 0; y < canvas.height; y += lineHeight + gap) {
-    const opacity = Math.random() * opacityVariation; // Randomize opacity for each line
-    ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`; // Adjust color and opacity here
+    const opacity = Math.random() * opacityVariation;
+    ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
     ctx.fillRect(0, y, canvas.width, lineHeight);
   }
 
